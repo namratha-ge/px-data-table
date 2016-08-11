@@ -85,8 +85,10 @@ Events:
                  show-column-chooser="{{showColumnChooser}}"
                  enable-column-reorder="{{enableColumnReorder}}"
                  enable-column-resize="{{enableColumnResize}}"
+                 table-filter-function-name="{{tableFilterFunctionName}}"
+                 table-sort-function-name="{{tableSortFunctionName}}"
                  id="dataTable">
-                 <content></content>
+        <content></content>
       </aha-table>
     </div>
   </template>
@@ -252,8 +254,29 @@ Events:
       enableColumnResize: {
         type: Boolean,
         value: false
+      },
+      /**
+       * Property to pass on custom filter function on all columns of px-data-table.
+       * This property will be overridden by filterFunction name if px-data-table
+       * columns are explicitly used.
+       * @default ''
+       */
+      tableFilterFunctionName: {
+        type: String,
+        value: ''
+      },
+      /**
+       * Property to pass on custom sort function on all columns of px-data-table.
+       * This property will be overridden by sortFunction name if px-data-table
+       * columns are explicitly used.
+       * @default '
+       */
+      tableSortFunctionName: {
+        type: String,
+        value: ''
       }
-    },
+    }
+
 
     /**
      * Events:

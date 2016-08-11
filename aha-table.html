@@ -183,6 +183,16 @@
         type: Boolean,
         value: false,
       },
+      //tableFilterFunctionName: if filter function callback is present
+      tableFilterFunctionName: {
+        type: String,
+        value: ''
+      },
+      //tableSortFunctionName: if sort function callback is present
+      tableSortFunctionName: {
+        type: String,
+        value: ''
+      },
       //_enableFilterRow: if table row is _enableFilterRow
       _enableFilterRow: {
         type: Boolean,
@@ -517,7 +527,9 @@
         filterable: true,
         editable: false,
         required: false,
-        selectAll: isSelectAll
+        selectAll: isSelectAll,
+        tableSortFunctionName: this.tableSortFunctionName ? this.tableSortFunctionName : '',
+        tableFilterFunctionName: this.tableFilterFunctionName ? this.tableFilterFunctionName : ''
         //validation?
       });
     },
@@ -730,7 +742,11 @@
         // use custom sort function if there is one
         this.meta.forEach(function(obj) {
           if(this.sortedColumn === obj.name) {
-            sortFunction = this._resolveFunctionOnWindow("sort-function-name", obj);
+            if(obj.tableSortFunctionName) {
+              sortFunction = this._resolveFunctionOnWindow("tableSortFunctionName", obj);
+            } else {
+              sortFunction = this._resolveFunctionOnWindow("sort-function-name", obj);
+            }
           }
         }, this);
       }
@@ -761,7 +777,11 @@
         }
       }
 
-      customFunctionFullPath = customFunctionRef.value.split(".");
+      if(customFunctionRef.value){
+        customFunctionFullPath = customFunctionRef.value.split(".");
+      }else{
+        customFunctionFullPath = customFunctionRef.split(".");
+      }
 
       for(i in customFunctionFullPath) {
         customFunction = customFunction[customFunctionFullPath[i]];
