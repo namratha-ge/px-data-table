@@ -511,7 +511,8 @@
 
       for(var prop in this.data[0]) {
         if(prop.indexOf('_') !== 0) {//skip internal field
-          var colInfo = this._generateLightDomColumn(prop, "string", false, prop.charAt(0).toUpperCase() + prop.slice(1));
+          var colType = this.tableColumnType ? this.tableColumnType : 'string';
+          var colInfo = this._generateLightDomColumn(prop, colType, false, prop.charAt(0).toUpperCase() + prop.slice(1));
           Polymer.dom(this).appendChild(colInfo);
         }
       }
