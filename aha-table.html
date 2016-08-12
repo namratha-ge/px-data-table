@@ -709,6 +709,10 @@
       var sortFunction = this._getSortFunction(),
           sortedRows;
       // sorting map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Sorting_maps
+      if(this.tableSortFunctionName !== "") {
+        sortedRows = rowsToSort.sort(sortFunction(this.sortedColumn, this.descending));
+        return sortedRows;
+      }
       sortedRows =
         rowsToSort
           .map(function(e, i) {
@@ -877,7 +881,9 @@
           matched,
           self = this,
           filteredRows;
-
+      if (this.tableFilterFunctionName !== "") {
+        return filterFunction(userEntry, columnName);
+      }
       for(i = 0, len = rowsToFilter.length; i < len; i++) {
         // if it's not filtered already
         if(rowsToFilter[i]._filtered === false) {
