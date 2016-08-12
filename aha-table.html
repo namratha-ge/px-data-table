@@ -574,11 +574,9 @@
       }
 
       // filter
-      if (this.tableFilterFunctionName === "") {
-        for (index in this.filteredColumns) {
-          this.filteredSortedData = this._filterByColumn(this.filteredColumns[index].name,
-            this.filteredColumns[index].userEntry, this.filteredSortedData);
-        }
+      for (index in this.filteredColumns) {
+        this.filteredSortedData = this._filterByColumn(this.filteredColumns[index].name,
+          this.filteredColumns[index].userEntry, this.filteredSortedData);
       }
       // count total number of rows
       self = this;
