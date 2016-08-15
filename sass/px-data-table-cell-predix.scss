@@ -21,12 +21,51 @@ common/abstract rules go in px-data-table-sketch.scss, not in this file.
 @import "px-typography-design/_base.typography.scss";
 @import 'px-data-table-cell-sketch.scss';
 
-.cell--edit {
-  &  input, textarea {
+:host{
+  --dropdown_bg_default: transparent;
+  --dropdown_bg_hover: transparent;
+  --dropdown_bg_opened: transparent;
+  --dropdown_border_color: 0;
+}
+
+:host(.cell__edit) {
+  background-color: $inuit-forms-background !important;
+  border: $inuit-table-border-width double $primary-blue !important;
+  box-shadow: $inuit-forms-border--inner;
+  & input, textarea {
     outline: none;
     background-color: transparent;
     box-shadow: none;
   }
+}
+
+:host(.cell--value__highlight--selected.cell--value__highlight--selected.cell--value__highlight--selected.cell--value__highlight--selected.cell--value__highlight--selected){
+  border: $inuit-table-border-width double $select-blue-default;
+}
+
+:host(.cell--value__highlight--selected__row.cell--value__highlight--selected__row.cell--value__highlight--selected__row.cell--value__highlight--selected__row.cell--value__highlight--selected__row){
+  border-top: $inuit-table-border-width double $select-blue-default;
+  border-bottom: $inuit-table-border-width double $select-blue-default;
+}
+
+:host(.cell--value__highlight--color__high){
+  background-color: var(--cell--value__highlight--color__high, rgba($alert-red, 0.25));
+}
+
+:host(.cell--value__highlight--color__medium){
+  background-color: var(--cell--value__highlight--color__medium, rgba($alert-yellow, 0.25));
+}
+
+:host(.cell--value__highlight--color__low){
+  background-color: var(--cell--value__highlight--color__low, rgba($alert-blue, 0.25));
+}
+
+:host(.selected) {
+  background-color: $select-blue-default;
+  color: $white;
+  border-top: $inuit-table-border-width double $select-blue-default !important;
+  border-bottom: $inuit-table-border-width double $select-blue-default !important;
+
 }
 
 .cell--value--icon__validation-failed {

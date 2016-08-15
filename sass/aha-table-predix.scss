@@ -37,6 +37,18 @@ common/abstract rules go in px-data-table-sketch.scss, not in this file.
   }
 }
 
+.table .aha-insertion-indicator-td {
+  background-color: $primary-blue;
+}
+
+.insertion-indicator.insertion-indicator.insertion-indicator {
+  background-color: $primary-blue;
+}
+
+.dragged {
+  color: $primary-blue;
+}
+
 .btn--pagination:focus {
   outline: 0;
 }
@@ -49,10 +61,11 @@ common/abstract rules go in px-data-table-sketch.scss, not in this file.
   background-color: $gray4;
 }
 
-.selected {
-  background-color: $select-blue-default !important;
-  color: $white !important;
+.selected-cell__selected.selected-cell__selected {
+  background-color: $select-blue-default;
+  border: 1px double $select-blue-default !important;
 }
+
 .th {
   font-weight: bold;
 }
@@ -62,29 +75,15 @@ common/abstract rules go in px-data-table-sketch.scss, not in this file.
   cursor: pointer;
 }
 
-.cell--edit {
-  &  input, textarea {
-    outline: none;
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
-
-.cell__edit{
-  background-color: $inuit-forms-background;
-  border: $inuit-table-border-width double $primary-blue !important;
-  box-shadow: $inuit-forms-border--inner;
-}
-
 .cell--value__validation-failed{
   border: $inuit-table-border-width double $alert-red !important;
 }
 
-.cell--value__highlight--color__high.cell--value__highlight--color__high.cell--value__highlight--color__high{
+.cell--value__highlight--color__high{
   background-color: var(--cell--value__highlight--color__high, rgba($alert-red, 0.25));
 }
 
-.cell--value__highlight--color__medium.cell--value__highlight--color__medium{
+.cell--value__highlight--color__medium{
   background-color: var(--cell--value__highlight--color__medium, rgba($alert-yellow, 0.25));
 }
 

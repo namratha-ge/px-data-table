@@ -92,7 +92,8 @@ Element that defines a columns in a data table.
        */
       filterable: {
         type: Boolean,
-        value: false
+        value: false,
+        notify: true
       },
 
       /**
@@ -151,6 +152,19 @@ Element that defines a columns in a data table.
       ellipsisClipPosition: {
         type: String,
         value: "right"
+      },
+      dropdownItems:{
+        type: Array,
+        value: function() {return [];},
+        notify: true
+      },
+      /**
+       * Whether the column should be hidden
+       *
+       */
+      hide: {
+        type: Boolean,
+        value: false
       },
       _highLightElLoadedCount: {
         type: Number,
